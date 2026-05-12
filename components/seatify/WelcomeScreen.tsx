@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ImageBackground } from 'react-native';
 
+
 export default function WelcomeScreen({ onStart }: any) {
   return (
     <View style={styles.container}>
       <ImageBackground 
-        source={{ uri: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800' }} 
+        source={require('../../assets/images/images (3).jpeg')} 
         style={styles.hero}
+        resizeMode='cover'
       >
         <View style={styles.overlay} />
       </ImageBackground>
@@ -37,10 +39,10 @@ export default function WelcomeScreen({ onStart }: any) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#0A0A0A' },
-  hero: { height: '50%', width: '100%' },
+  hero: {flex:1, height: '110%', width: '100%' ,},
   overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(10,10,10,0.4)' },
-  footer: { flex: 1, padding: 30, backgroundColor: '#0A0A0A', marginTop: -30, borderTopLeftRadius: 30, borderTopRightRadius: 30 },
-  indicator: { width: 40, height: 4, backgroundColor: '#10B981', borderRadius: 2, marginBottom: 20 },
+  footer: { flex: 1, padding: 30, backgroundColor: '#0A0A0A', marginTop: 50, borderTopLeftRadius: 30, borderTopRightRadius: 50 },
+  
   title: { color: '#FFF', fontSize: 32, fontWeight: 'bold', lineHeight: 40 },
   desc: { color: '#888', fontSize: 16, marginTop: 15, lineHeight: 24 },
   statsRow: { flexDirection: 'row', marginVertical: 30 },

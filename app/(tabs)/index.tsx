@@ -1,31 +1,23 @@
-import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
-import LanguageScreen from '@/components/seatify/LanguageScreen';
-import WelcomeScreen from '@/components/seatify/WelcomeScreen';
-import Dashboard  from '@/components/seatify/Dashbard';
-import type { Lang } from '@/constants/data';
 
-type Step = 'lang' | 'welcome' | 'dashboard';
+import "@/global.css"
+import React from 'react';
 
-export default function Index() {
-  const [step, setStep] = useState<Step>('lang');
-  const [lang, setLang] = useState<Lang>('pt');
+
+import { useColorScheme } from '@/hooks/use-color-scheme';
+
+
+import { View, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
+import Index from '@/app/(tabs)/index';
+
+
+export default function TabLayout() {
+  const colorScheme = useColorScheme();
 
   return (
-    <View style={styles.container}>
-      {step === 'lang' && (
-        <LanguageScreen onContinue={() => { setStep('welcome'); }} />
-      )}
-      {step === 'welcome' && (
-        <WelcomeScreen lang={lang} onStart={() => setStep('dashboard')} />
-      )}
-     {step === "dashboard" && (
-        <Dashboard lang={lang} onBack={() => setStep("welcome")} />
-      )}
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-});
+   <SafeAreaView>
+         <StatusBar barStyle="light-content" />
+         <Index />
+       </SafeAreaView>
+     );
+   }
+   

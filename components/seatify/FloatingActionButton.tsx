@@ -8,6 +8,8 @@ import {
   Animated 
 } from 'react-native';
 import { ReservationManager } from './ReservationManager';
+import { Plus } from 'lucide-react-native';
+
 
 export const FloatingActionButton = ({ lang }: { lang: string }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -43,7 +45,9 @@ export const FloatingActionButton = ({ lang }: { lang: string }) => {
           onPress={() => setModalVisible(true)}
           activeOpacity={0.8}
         >
-          <Text style={styles.icon}>+</Text>
+        <Text style={styles.icon}>
+          <Plus/>
+        </Text>
         </TouchableOpacity>
       </Animated.View>
 
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
     borderRadius: 32,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#10B981',
+   
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.4,
     shadowRadius: 12,
@@ -80,5 +84,6 @@ const styles = StyleSheet.create({
     color: '#000',
     fontSize: 32,
     fontWeight: '300',
+    
   }
 });
