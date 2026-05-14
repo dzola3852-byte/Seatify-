@@ -3,7 +3,7 @@
    import { View, StyleSheet, ScrollView } from 'react-native';
    import LanguageScreen from '@/components/seatify/LanguageScreen';
    import WelcomeScreen from '@/components/seatify/WelcomeScreen';
-   import Dashboard  from '@/components/seatify/Dashbard';
+   import Dashboard from '@/components/seatify/Dashbard';
    import type { Lang } from '@/constants/data';
    
    type Step = 'lang' | 'welcome' | 'dashboard';

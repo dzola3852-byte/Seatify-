@@ -80,7 +80,8 @@ static void ev_handler(struct mg_connection *c, int ev, void *ev_data) {
             salvar_reserva(r);
             mg_http_reply(c, 200, "Content-Type: application/json\r\n", "{\"status\":\"ok\"}");
         } 
-        // Rota: /checkin (QR Code)
+        // Rota: /checkin 
+        (QR Code)
         else if (mg_match(hm->uri, mg_str("/checkin"), NULL)) {
             char id_str[10];
             mg_http_get_var(&hm->query, "id", id_str, sizeof(id_str));
@@ -91,6 +92,29 @@ static void ev_handler(struct mg_connection *c, int ev, void *ev_data) {
             }
         }
     }
+}
+
+// Rota: /listar_reservas
+else if (mg_match(hm->uri, mg_str("/listar_reservas"), NULL)) {
+    FILE *file = fopen(DB_FILE, "rb");
+    if (!file) {
+        mg_http_reply(c, 200, "Content-Type: application/json\r\n", "[]");
+        return;
+    }
+
+    Reserva r;
+    mg_http_reply(c, 200, "Content-Type: application/json\r\n", "");
+    mg_printf(c, "[");
+    int primeiro = 1;
+
+    while (fread(&r, sizeof(Reserva), 1, file)) {
+        if (!primeiro) mg_printf(c, ",");
+        mg_printf(c, "{\"id_mesa\":%d, \"nome_cliente\":\"%s\", \"numero\":%d, \"ocupada\":%d}", 
+                  r.id_mesa, r.nome_cliente, r.numero_do_cliente, r.ocupada);
+        primeiro = 0;
+    }
+    mg_printf(c, "]");
+    fclose(file);
 }
 
 int main() {
