@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, ActivityIndicator, RefreshControl } from 'react-native';
 
-const SERVER_IP = "192.168.1.XX"; // Mesma config do seu Manager
+const SERVER_IP = "192.168.43.217"; // Mesma config do seu Manager
 
 export const ReservationList = () => {
   const [reservations, setReservations] = useState([]);

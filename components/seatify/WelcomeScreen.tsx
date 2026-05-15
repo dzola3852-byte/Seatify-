@@ -14,7 +14,7 @@ export default function WelcomeScreen({ onStart }: any) {
       </ImageBackground>
 
       <View style={styles.footer}>
-        <View style={styles.indicator} />
+        <View  />
         <Text style={styles.title}>Reserve sua mesa no Seatify</Text>
         <Text style={styles.desc}>Encontre os melhores restaurantes e faça reservas em segundos com nossa tecnologia.</Text>
         
@@ -50,5 +50,11 @@ const styles = StyleSheet.create({
   statVal: { color: '#10B981', fontSize: 20, fontWeight: 'bold' },
   statLab: { color: '#555', fontSize: 12, textTransform: 'uppercase' },
   btn: { backgroundColor: '#10B981', padding: 20, borderRadius: 16, alignItems: 'center' },
-  btnText: { color: '#000', fontWeight: 'bold', fontSize: 16 }
+  btnText: { color: '#000', fontWeight: 'bold', fontSize: 16 },
+  indicator: {
+    color: 'red',
+    fontSize: 20,
+    fontWeight: "bold",
+    lineHeight:24,
+},
 });

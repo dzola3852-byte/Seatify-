@@ -8,7 +8,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { CheckCircle2 } from 'lucide-react-native';
 
 const { height } = Dimensions.get('window');
-const SERVER_IP = "192.168.1.XX"; // Altere para o IP do seu servidor C
+const SERVER_IP = "192.168.43.217"; 
 
 export default function ReservationManager({ visible, onClose, tableId }: any){
   const [name, setName] = useState('');
@@ -148,7 +148,7 @@ export default function ReservationManager({ visible, onClose, tableId }: any){
               )}
 
               <TouchableOpacity style={styles.mainBtn} onPress={sendToBackend}>
-                <Text style={styles.mainBtnText}>Finalizar Sincronização C</Text>
+                <Text style={styles.mainBtnText}>Confirmar Reserva</Text>
               </TouchableOpacity>
 
               <TouchableOpacity style={styles.closeBtn} onPress={onClose}>

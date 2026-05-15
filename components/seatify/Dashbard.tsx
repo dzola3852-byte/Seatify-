@@ -5,13 +5,16 @@ import {
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { 
-  ChevronLeft, Search, Star, Users, CalendarCheck, CheckCircle2 
+  ChevronLeft, Search, Star, Users, CalendarCheck, CheckCircle2, 
+  CalendarCheck2
 } from "lucide-react-native";
-import  ReservationManager  from "./ReservationManager"; 
+import  ReservationManager  from "./ReservationManager";
 import { ReservationList } from "./ReservationList";
+import { useRouter } from "expo-router";
+
 
 // CONFIGURAÇÃO DO SERVIDOR C
-const SERVER_IP = "192.168.1.XX"; 
+const SERVER_IP = "192.168.43.217"; 
 
 const RESTAURANTS = [
   { id: '1', name: 'Lumina', rating: '4.9', img: require('../../assets/images/images (2).jpeg') },
@@ -20,6 +23,7 @@ const RESTAURANTS = [
 ];
 
 export default function Dashboard({ onBack }: { onBack: () => void }) {
+  const router= useRouter();
   const { width } = useWindowDimensions();
   const [selectedRes, setSelectedRes] = useState<string | null>(null);
   const [selectedTable, setSelectedTable] = useState<number | null>(null);
@@ -100,6 +104,10 @@ export default function Dashboard({ onBack }: { onBack: () => void }) {
               <ChevronLeft color="#FFF" size={20} />
             </TouchableOpacity>
             <Text style={styles.headerTitle}>Seatify</Text>
+            <TouchableOpacity onPress={()=>router.push('./ReservationList.tsx')} style={styles.backBtnr}>
+              <CalendarCheck2 color="#FFF" size={20} />
+            </TouchableOpacity>
+            
             <View style={{ width: 40 }} />
           </View>
 
@@ -108,6 +116,8 @@ export default function Dashboard({ onBack }: { onBack: () => void }) {
             <TextInput placeholder="Procurar mesa..." placeholderTextColor="#64748B" style={styles.input} />
           </View>
         </LinearGradient>
+
+        <ReservationList/>
 
         <View style={styles.body}>
           <Text style={styles.sectionTitle}>1. Escolha o Restaurante</Text>
@@ -178,7 +188,9 @@ const styles = StyleSheet.create({
   header: { padding: 20, borderBottomLeftRadius: 32, borderBottomRightRadius: 32 },
   navBar: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 },
   backBtn: { padding: 10, backgroundColor: '#1A1A22', borderRadius: 14, borderWidth: 1, borderColor: '#333' },
-  headerTitle: { color: '#FFF', fontSize: 18, fontWeight: 'bold' },
+  backBtnr: { padding: 10, backgroundColor: '#1A1A22', borderRadius: 14, borderWidth: 1, borderColor: '#333',},
+  
+  headerTitle: { color: '#FFF', fontSize: 18, fontWeight: 'bold' , textAlign:'center',marginLeft:10,},
   searchContainer: { flexDirection: 'row', backgroundColor: '#1A1A22', borderRadius: 16, padding: 12, alignItems: 'center', borderWidth: 1, borderColor: '#333' },
   input: { flex: 1, color: '#FFF', marginLeft: 10, fontSize: 14 },
   body: { paddingTop: 24 },

@@ -7,7 +7,7 @@ import {
   Text, 
   Animated 
 } from 'react-native';
-import { ReservationManager } from './ReservationManager';
+import ReservationManager  from './ReservationManager';
 import { Plus } from 'lucide-react-native';
 
 
